@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OandO Educonsult - Expert Higher Education Application Guidance</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom font import and application */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a202c; /* Dark text for contrast */
+        }
+
+        /* Styling for the main hero image area with overlay */
+        .hero-background {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: background-image 1s ease-in-out;
+        }
+
+        .hero-overlay {
+            background-color: rgba(9, 26, 50, 0.85); /* Dark overlay */
+        }
+
+        /* Slideshow controls */
+        .slideshow-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 40;
+        }
+
+        .slide-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slide-dot.active {
+            background-color: #FFC400;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Custom styling for star ratings */
+        .star-rating {
+            color: #FFC400; /* Yellow stars */
+            font-size: 1.25rem;
+        }
+
+        /* Utility for smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* SVG icon styling for features */
+        .feature-icon {
+            stroke: #0A74DA;
+            stroke-width: 2;
+            fill: none;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'oo-blue': '#0A74DA',
+                        'oo-dark': '#091A32',
+                        'oo-light': '#E6F0F8',
+                        'oo-yellow': '#FFC400',
+                    },
+                    boxShadow: {
+                        'card': '0 10px 30px rgba(10, 116, 218, 0.1)',
+                        'xl': '0 20px 25px -5px rgba(10, 116, 218, 0.1), 0 10px 10px -5px rgba(10, 116, 218, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Header / Navigation (now positioned over the hero) -->
+    <header class="absolute inset-x-0 top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+                <!-- Logo -->
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <a href="#" class="flex items-center">
+                        <img src="Oando educonsultant 2.png" alt="OandO Educonsult Logo" class="h-12 w-auto">
+                    </a>
+                </div>
+
+                <!-- Navigation Links (Hidden on mobile) -->
+                <nav class="hidden md:flex space-x-10">
+                    <a href="#services" class="text-base font-medium text-white hover:text-oo-yellow transition duration-150">Services</a>
+                    <a href="#process" class="text-base font-medium text-white hover:text-oo-yellow transition duration-150">Process</a>
+                    <a href="#partners" class="text-base font-medium text-white hover:text-oo-yellow transition duration-150">Partners</a>
+                    <a href="#testimonials" class="text-base font-medium text-white hover:text-oo-yellow transition duration-150">Testimonials</a>
+                    <a href="#faqs" class="text-base font-medium text-white hover:text-oo-yellow transition duration-150">FAQs</a>
+                    <a href="#contact" class="text-base font-medium text-white hover:text-oo-yellow transition duration-150">Contact</a>
+                </nav>
+
+                <!-- CTA Buttons -->
+                <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+                    <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-oo-blue hover:bg-oo-dark transition duration-300 transform hover:scale-105">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (Based on Screenshot 52) -->
+    <main>
+        <div class="hero-background pt-0 pb-32" id="heroSlideshow">
+            <div class="hero-overlay absolute inset-0"></div>
+            <div class="slideshow-controls">
+                <span class="slide-dot active" onclick="goToSlide(0)"></span>
+                <span class="slide-dot" onclick="goToSlide(1)"></span>
+                <span class="slide-dot" onclick="goToSlide(2)"></span>
+                <span class="slide-dot" onclick="goToSlide(3)"></span>
+            </div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center lg:text-left pt-24 pb-16">
+                    <p class="text-oo-yellow text-sm sm:text-base font-semibold uppercase tracking-wider mb-3">Empowering Your Future</p>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Streamline Your Higher Education Application with <span class="block text-oo-blue">Expert Guidance</span>
+                    </h1>
+                    <p class="mt-6 max-w-2xl text-xl text-gray-200 mx-auto lg:mx-0">
+                        OandO Educonsult is a leading educational platform helping students from across the globe secure high school and university places at top-tier international institutions.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <!-- Primary CTA (I am a student exploring abroad) -->
+                        <a href="#services" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-full shadow-xl text-oo-dark bg-oo-yellow hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
+                            I am a student exploring abroad
+                        </a>
+                        <!-- Secondary CTA (Register as a recruitment partner) -->
+                        <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 border-2 border-oo-blue text-lg font-bold rounded-full shadow-xl text-white bg-transparent hover:bg-oo-blue transition duration-300 transform hover:scale-105">
+                            Register as a recruitment partner
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Education Partners Bar (Based on Screenshot 53) -->
+                <div class="bg-white rounded-xl shadow-xl p-6 md:p-10 -mb-40 transform translate-y-20 hidden">
+                    <h2 class="text-center text-xl font-bold text-oo-dark mb-6">Our Education Partners</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
+                        <!-- Partner Logos (Placeholder image URLs used) -->
+                        <img class="max-h-12 w-auto opacity-75 hover:opacity-100 transition duration-300" src="https://placehold.co/150x40/ffffff/000000?text=Partner+1" alt="Partner University Logo 1">
+                        <img class="max-h-12 w-auto opacity-75 hover:opacity-100 transition duration-300" src="https://placehold.co/150x40/ffffff/000000?text=Partner+2" alt="Partner University Logo 2">
+                        <img class="max-h-12 w-auto opacity-75 hover:opacity-100 transition duration-300" src="https://placehold.co/150x40/ffffff/000000?text=Partner+3" alt="Partner University Logo 3">
+                        <img class="max-h-12 w-auto opacity-75 hover:opacity-100 transition duration-300" src="https://placehold.co/150x40/ffffff/000000?text=Partner+4" alt="Partner University Logo 4">
+                        <img class="max-h-12 w-auto opacity-75 hover:opacity-100 transition duration-300" src="https://placehold.co/150x40/ffffff/000000?text=Partner+5" alt="Partner University Logo 5">
+                    </div>
+
+                    <!-- Key Stats Section (Based on Screenshot 53) -->
+                    <div class="mt-10 pt-6 border-t border-gray-100 grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+                        <div class="flex items-center justify-center text-oo-dark">
+                            <svg class="w-6 h-6 mr-2 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.207 7.793a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L11 13.586l3.293-3.293a1 1 0 011.414 0z"/></svg>
+                            <span class="font-semibold">Established in 2011</span>
+                        </div>
+                        <div class="flex items-center justify-center text-oo-dark">
+                            <svg class="w-6 h-6 mr-2 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.207 7.793a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L11 13.586l3.293-3.293a1 1 0 011.414 0z"/></svg>
+                            <span class="font-semibold">1,000+ Students Placed</span>
+                        </div>
+                        <div class="flex items-center justify-center text-oo-dark">
+                            <svg class="w-6 h-6 mr-2 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.207 7.793a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L11 13.586l3.293-3.293a1 1 0 011.414 0z"/></svg>
+                            <span class="font-semibold">Universities & High Schools Worldwide</span>
+                        </div>
+                        <div class="flex items-center justify-center text-oo-dark">
+                            <svg class="w-6 h-6 mr-2 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.207 7.793a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L11 13.586l3.293-3.293a1 1 0 011.414 0z"/></svg>
+                            <span class="font-semibold">95% Acceptance Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: About Us / Our Mission (Based on Screenshot 53) -->
+        <section class="py-24 bg-white" id="services">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center mb-16 pt-16">
+                    <h2 class="text-4xl font-extrabold text-oo-dark tracking-tight sm:text-5xl">
+                        We assist students in gaining admission to top international educational institutions.
+                    </h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-600">
+                        We provide full assistance and professional advice to students interested in pursuing higher education overseas, with a particular emphasis on securing admission to the world's finest high schools, colleges, and universities.
+                    </p>
+                </div>
+                <!-- Service Tiers / Key Features (NEW FEATURE: Clearer Service Tiers) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 bg-oo-light rounded-xl shadow-xl hover:shadow-oo-blue hover:scale-[1.02] transition duration-300 transform border-b-4 border-oo-blue">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-oo-blue mb-4">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-oo-dark mb-3">Tier 1: Foundation</h3>
+                        <p class="text-gray-600">Course & institution selection guidance, application checklist, essay review (1 draft). Perfect for self-starters needing expert direction.</p>
+                    </div>
+                    <div class="p-6 bg-oo-light rounded-xl shadow-xl hover:shadow-oo-blue hover:scale-[1.02] transition duration-300 transform border-b-4 border-oo-blue">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-oo-blue mb-4">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-oo-dark mb-3">Tier 2: Comprehensive</h3>
+                        <p class="text-gray-600">All of Tier 1, plus full application form handling, 3x essay revisions, visa application guidance, and interview prep.</p>
+                    </div>
+                    <div class="p-6 bg-oo-light rounded-xl shadow-xl hover:shadow-oo-blue hover:scale-[1.02] transition duration-300 transform border-b-4 border-oo-blue">
+                        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-oo-blue mb-4">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8.01l-9 9z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-oo-dark mb-3">Tier 3: All-Inclusive</h3>
+                        <p class="text-gray-600">The ultimate package: Tier 2 benefits, plus pre-departure briefing, accommodation search, and dedicated 24/7 support for the first month abroad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: The Admissions Process (Based on Screenshot 55) -->
+        <section class="py-24 bg-oo-light" id="process">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center mb-16">
+                    <h2 class="text-4xl font-extrabold text-oo-dark tracking-tight sm:text-5xl">
+                        The Admissions Process
+                    </h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-xl text-gray-600">
+                        We achieve success together. Our expert team ensures quality and detail are at the absolute heart of your application, navigating every sophisticated requirement.
+                    </p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-12 items-center">
+                    <!-- Text/Image Block -->
+                    <div class="lg:w-1/2">
+                        <img class="w-full h-auto rounded-xl shadow-xl" src="Australia-Study-Abroad-Consultants-.jpg" alt="Consultant helping a student">
+                    </div>
+
+                    <!-- Steps List -->
+                    <div class="lg:w-1/2 space-y-8">
+                        <!-- Step 1 -->
+                        <div class="flex p-6 bg-white rounded-xl shadow-card transition duration-300 hover:shadow-xl">
+                            <div class="flex-shrink-0 mr-4">
+                                <svg class="w-8 h-8 feature-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14c-4.418 0-8 2.015-8 4.5V20h16v-1.5c0-2.485-3.582-4.5-8-4.5z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-oo-blue mb-1">1. Register and Consult</h3>
+                                <p class="text-gray-600">Sign up for a free account. We'll schedule an initial consultation to understand your academic goals, budget, and desired locations.</p>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="flex p-6 bg-white rounded-xl shadow-card transition duration-300 hover:shadow-xl">
+                            <div class="flex-shrink-0 mr-4">
+                                <svg class="w-8 h-8 feature-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c1.657 0 3 1.343 3 3s-1.343 3-3 3-3-1.343-3-3 1.343-3 3-3zM21 11c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-oo-blue mb-1">2. Select Course and Institution</h3>
+                                <p class="text-gray-600">Based on our detailed profile, we present a curated list of study fields and universities that match your ambitions and entry requirements.</p>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="flex p-6 bg-white rounded-xl shadow-card transition duration-300 hover:shadow-xl">
+                            <div class="flex-shrink-0 mr-4">
+                                <svg class="w-8 h-8 feature-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-oo-blue mb-1">3. Complete and Submit Forms</h3>
+                                <p class="text-gray-600">We manage the preparation and submission of all necessary documentation, transcripts, and personal statements, ensuring perfection.</p>
+                            </div>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="flex p-6 bg-white rounded-xl shadow-card transition duration-300 hover:shadow-xl">
+                            <div class="flex-shrink-0 mr-4">
+                                <svg class="w-8 h-8 feature-icon" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-oo-blue mb-1">4. Visa and Pre-Departure</h3>
+                                <p class="text-gray-600">After receiving your offer, we provide end-to-end visa support, accommodation assistance, and a vital pre-departure briefing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Student Testimonials (Based on Screenshot 56) -->
+        <section class="py-24 bg-white" id="testimonials">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-oo-dark tracking-tight sm:text-5xl text-center mb-16">
+                    Students are at the heart of everything we do
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Testimonial Card 1 -->
+                    <div class="p-6 bg-oo-dark text-white rounded-xl shadow-xl flex flex-col justify-between h-full">
+                        <div>
+                            <div class="star-rating mb-3">★★★★★</div>
+                            <h4 class="text-xl font-bold mb-1">Isioma Okonji-Okonkwo</h4>
+                            <p class="text-oo-blue mb-4 font-medium">University of Dundee | 1.5 years study gap</p>
+                            <p class="text-gray-200">"The journey to study abroad finally came through in 3 months. Even though I have a 1.5 years study gap, my family and I can testify of OandO Educonsult's amazing strategy. Student and Dependent currently in the Dundee, Scotland. Thank you OandO."</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Card 2 -->
+                    <div class="p-6 bg-oo-dark text-white rounded-xl shadow-xl flex flex-col justify-between h-full">
+                        <div>
+                            <div class="star-rating mb-3">★★★★★</div>
+                            <h4 class="text-xl font-bold mb-1">Vincent Inwezerua</h4>
+                            <p class="text-oo-blue mb-4 font-medium">MSc Graduate</p>
+                            <p class="text-gray-200">"After 2 decades of graduation, I finally decided to proceed on my master's degree. It seemed unrealistic at first considering the decades of study gap, but OandO's professional and unbeatable service made it a reality."</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Card 3 -->
+                    <div class="p-6 bg-oo-dark text-white rounded-xl shadow-xl flex flex-col justify-between h-full">
+                        <div>
+                            <div class="star-rating mb-3">★★★★★</div>
+                            <h4 class="text-xl font-bold mb-1">Tayọ Korede</h4>
+                            <p class="text-oo-blue mb-4 font-medium">University of Central Lancashire</p>
+                            <p class="text-gray-200">"The career counseling, visa support and overall service quality was excellent. I got my study and dependent visa through their quality advice and support. Thumbs up!"</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Card 4 -->
+                    <div class="p-6 bg-oo-dark text-white rounded-xl shadow-xl flex flex-col justify-between h-full">
+                        <div>
+                            <div class="star-rating mb-3">★★★★★</div>
+                            <h4 class="text-xl font-bold mb-1">Ali Dolapo</h4>
+                            <p class="text-oo-blue mb-4 font-medium">Royal Roads University</p>
+                            <p class="text-gray-200">"OandO Educonsult assisted with admission into Royal Road University, support with the visa application and always ready to help. Distance is never a barrier to their quality of service."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Global Presence (Based on Screenshot 57) -->
+        <section class="py-24 bg-oo-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold text-oo-dark tracking-tight sm:text-5xl mb-4">
+                        We connect Schools, Universities, Students and Recruitment Partners from every part of the world!
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Our global network spans across continents, connecting students with top-tier educational institutions and opportunities worldwide.
+                    </p>
+                </div>
+                
+                <!-- World Map Image Container -->
+                <div class="flex justify-center items-center rounded-2xl overflow-hidden shadow-xl bg-white p-8">
+                    <img src="student map.jpg" alt="Global presence map showing international student placements" class="w-full h-auto max-w-4xl rounded-lg">
+                </div>
+
+                <!-- Stats Section Below Map -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-white rounded-xl shadow-md">
+                        <div class="text-4xl font-extrabold text-oo-blue mb-2">50+</div>
+                        <p class="text-lg text-gray-600 font-semibold">Countries</p>
+                        <p class="text-gray-500 text-sm mt-1">Across 6 continents</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-md">
+                        <div class="text-4xl font-extrabold text-oo-blue mb-2">1000+</div>
+                        <p class="text-lg text-gray-600 font-semibold">Partner Institutions</p>
+                        <p class="text-gray-500 text-sm mt-1">Top-ranked universities</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-md">
+                        <div class="text-4xl font-extrabold text-oo-blue mb-2">24/7</div>
+                        <p class="text-lg text-gray-600 font-semibold">Global Support</p>
+                        <p class="text-gray-500 text-sm mt-1">Around the clock assistance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: FAQs (Based on Screenshot 58) -->
+        <section class="py-24 bg-white" id="faqs">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-oo-dark tracking-tight sm:text-5xl text-center mb-4">
+                    Frequently Asked Questions
+                </h2>
+                <p class="text-center text-xl text-gray-600 mb-12">
+                    Got a question? We've got the answers. If you need more support, use our live chat/contact form below!
+                </p>
+
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <details class="bg-oo-light p-5 rounded-lg shadow-md cursor-pointer group transition duration-300 open:bg-oo-blue open:text-white">
+                        <summary class="flex justify-between items-center text-lg font-semibold text-oo-dark group-open:text-white">
+                            What are the admission requirements for international students?
+                            <svg class="w-6 h-6 transform transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                        </summary>
+                        <p class="mt-3 text-gray-700 group-open:text-gray-200">
+                            Each educational institution may have different admission requirements, but common requirements include proof of English proficiency (such as TOEFL or IELTS scores), transcripts of previous academic work, and financial documents showing ability to pay for tuition and living expenses.
+                        </p>
+                    </details>
+                    <!-- FAQ Item 2 -->
+                    <details class="bg-oo-light p-5 rounded-lg shadow-md cursor-pointer group transition duration-300 open:bg-oo-blue open:text-white">
+                        <summary class="flex justify-between items-center text-lg font-semibold text-oo-dark group-open:text-white">
+                            What types of financial aid and scholarships are available?
+                            <svg class="w-6 h-6 transform transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                        </summary>
+                        <p class="mt-3 text-gray-700 group-open:text-gray-200">
+                            Various scholarships are available based on merit, need, country of origin, and field of study. We assist in identifying and applying for institutional and external funding opportunities relevant to your profile.
+                        </p>
+                    </details>
+                    <!-- FAQ Item 3 -->
+                    <details class="bg-oo-light p-5 rounded-lg shadow-md cursor-pointer group transition duration-300 open:bg-oo-blue open:text-white">
+                        <summary class="flex justify-between items-center text-lg font-semibold text-oo-dark group-open:text-white">
+                            Can international students transfer credits from their home country?
+                            <svg class="w-6 h-6 transform transition-transform group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                        </summary>
+                        <p class="mt-3 text-gray-700 group-open:text-gray-200">
+                            Credit transfer policies vary significantly by institution and country. We guide you through the process of assessing your current qualifications and communicating with the new institution to maximize accepted credits.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Contact Form (NEW FEATURE: Integrated Form/Modal for better lead capture) -->
+        <section class="py-24 bg-oo-dark" id="contact">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Info -->
+                    <div class="text-white">
+                        <h2 class="text-4xl font-extrabold tracking-tight sm:text-5xl mb-4">
+                            Get in Touch Today
+                        </h2>
+                        <p class="text-xl text-gray-300 mb-8">
+                            Start your application journey with OandO Educonsult. We are here to answer your questions and guide your future.
+                        </p>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <svg class="flex-shrink-0 w-8 h-8 text-oo-yellow mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                                <div>
+                                    <p class="font-bold text-lg">Email Documents & Enquiries</p>
+                                    <a href="mailto:info@oandoeduconsult.com" class="text-oo-blue hover:text-oo-yellow transition duration-150">info@oandoeduconsult.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="flex-shrink-0 w-8 h-8 text-oo-yellow mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-4.96-6.39 19.79 19.79 0 01-3.07-8.63A2 2 0 013.08 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                                <div>
+                                    <p class="font-bold text-lg">WhatsApp/Call</p>
+                                    <p class="text-gray-300">+44 7503654006 | +234 8068531240 | +971 544395920</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-white p-8 rounded-xl shadow-xl">
+                        <h3 class="text-2xl font-bold text-oo-dark mb-6">Send Us a Quick Message</h3>
+                        <form onsubmit="handleFormSubmit(event)">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                <input type="text" id="name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-oo-blue focus:ring-oo-blue p-3 border">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                <input type="email" id="email" name="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-oo-blue focus:ring-oo-blue p-3 border">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-sm font-medium text-gray-700">Your Enquiry</label>
+                                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-oo-blue focus:ring-oo-blue p-3 border"></textarea>
+                            </div>
+                            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-full shadow-sm text-oo-dark bg-oo-yellow hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
+                                Send Message
+                            </button>
+                            <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Based on Screenshot 59) -->
+    <footer class="bg-oo-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-10 border-b border-gray-700 pb-10 mb-10">
+
+                <!-- Column 1: Get Social & App Downloads -->
+                <div>
+                    <h5 class="text-xl font-bold text-oo-blue mb-4">OandO Educonsult</h5>
+                    <p class="text-gray-400 mb-6">Expert guidance for your global education future.</p>
+                    <h6 class="font-bold mb-3">Get Social</h6>
+                    <div class="flex space-x-4 mb-6">
+                        <!-- Social Icons (Placeholder using SVG for good practice) -->
+                        <a href="#" class="text-oo-blue hover:text-oo-yellow transition duration-150"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3 8.5h-2.5v-2c0-.828.672-1.5 1.5-1.5h1v-2h-2.5c-2.485 0-4.5 2.015-4.5 4.5v2h-2v3h2v7h3v-7h2.5l.5-3z"/></svg></a>
+                        <a href="#" class="text-oo-blue hover:text-oo-yellow transition duration-150"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c-2.67 1.25-5.33 2.5-8 3.75-2.67 1.25-5.33 2.5-8 3.75-2.67-1.25-5.33-2.5-8-3.75-2.67-1.25-5.33-2.5-8-3.75zm0 8c-2.67 1.25-5.33 2.5-8 3.75-2.67 1.25-5.33 2.5-8 3.75-2.67-1.25-5.33-2.5-8-3.75zm0 8c-2.67 1.25-5.33 2.5-8 3.75-2.67 1.25-5.33 2.5-8 3.75-2.67-1.25-5.33-2.5-8-3.75z"/></svg></a>
+                        <a href="#" class="text-oo-blue hover:text-oo-yellow transition duration-150"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4 7h-2c-1.1 0-2 .9-2 2v2h4l-.4 3H12v7h-3v-7H7.5V14H9v-2c0-2.485 2.015-4.5 4.5-4.5h2.5V9z"/></svg></a>
+                        <a href="#" class="text-oo-blue hover:text-oo-yellow transition duration-150"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-4.5 13.5c0-.828.672-1.5 1.5-1.5h1.5v-3h-1.5c-.828 0-1.5-.672-1.5-1.5v-1c0-.828.672-1.5 1.5-1.5h1.5v-1.5h1.5v1.5h1.5c.828 0 1.5.672 1.5 1.5v1c0 .828-.672 1.5-1.5 1.5h-1.5v3h1.5c.828 0 1.5.672 1.5 1.5v1c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-1z"/></svg></a>
+                    </div>
+                    <div class="space-y-3">
+                        <a href="#" class="flex items-center bg-gray-700 p-2 rounded-lg hover:bg-gray-600 transition duration-150">
+                            <img class="w-6 h-6 mr-3" src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+                            <span class="text-sm">Download on Google Play</span>
+                        </a>
+                        <a href="#" class="flex items-center bg-gray-700 p-2 rounded-lg hover:bg-gray-600 transition duration-150">
+                            <img class="w-6 h-6 mr-3" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store">
+                            <span class="text-sm">Download on the App Store</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Students & Universities -->
+                <div>
+                    <h5 class="text-xl font-bold mb-4">Students & Universities</h5>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Application Support</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Admissions Processing</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Visa Support</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Scholarship Guidance</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Resources -->
+                <div>
+                    <h5 class="text-xl font-bold mb-4">Resources</h5>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Our Blog</a></li>
+                        <li><a href="#faqs" class="hover:text-oo-blue transition duration-150">FAQs</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">University Finder</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Student Portal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Legal -->
+                <div>
+                    <h5 class="text-xl font-bold mb-4">Legal</h5>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Terms and Conditions</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Disclaimer</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Cookie Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 5: Company -->
+                <div>
+                    <h5 class="text-xl font-bold mb-4">Company</h5>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">About Us</a></li>
+                        <li><a href="#contact" class="hover:text-oo-blue transition duration-150">Contact</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Partners & Agents</a></li>
+                        <li><a href="#" class="hover:text-oo-blue transition duration-150">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center text-gray-500 text-sm">
+                Copyright © 2025 OandO Educonsult. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal (Hidden by default) -->
+    <div id="contact-modal" class="hidden fixed inset-0 z-[100] overflow-y-auto bg-gray-900 bg-opacity-75 flex items-center justify-center p-4" onclick="if(event.target.id === 'contact-modal') document.getElementById('contact-modal').classList.add('hidden')">
+        <div class="bg-white rounded-xl max-w-lg w-full p-8 shadow-2xl relative">
+            <h3 class="text-3xl font-bold text-oo-dark mb-4">Get Started on Your Journey</h3>
+            <p class="text-gray-600 mb-6">Tell us a bit about your goals and we'll reach out within 24 hours.</p>
+
+            <form onsubmit="handleModalSubmit(event)">
+                <div class="mb-4">
+                    <label for="modal-name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="modal-name" name="name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-oo-blue focus:ring-oo-blue p-3 border">
+                </div>
+                <div class="mb-4">
+                    <label for="modal-email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" id="modal-email" name="email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-oo-blue focus:ring-oo-blue p-3 border">
+                </div>
+                <div class="mb-6">
+                    <label for="modal-goal" class="block text-sm font-medium text-gray-700">Goal (e.g., Study Visa, Partner Inquiry)</label>
+                    <select id="modal-goal" name="goal" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-oo-blue focus:ring-oo-blue p-3 border bg-white">
+                        <option value="">Select a Goal</option>
+                        <option value="student-application">Student Application (High School/University)</option>
+                        <option value="visa-assistance">Visa Assistance Only</option>
+                        <option value="recruitment-partner">Become a Recruitment Partner</option>
+                        <option value="general-enquiry">General Enquiry</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-full shadow-sm text-oo-dark bg-oo-yellow hover:bg-yellow-400 transition duration-300 transform hover:scale-105">
+                    Submit & Talk to an Expert
+                </button>
+            </form>
+
+            <button onclick="document.getElementById('contact-modal').classList.add('hidden')" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 transition duration-150">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <div id="modal-form-message" class="mt-4 text-center text-sm font-medium hidden text-green-600"></div>
+        </div>
+    </div>
+
+
+    <script>
+        // Slideshow images array
+        const slideshowImages = [
+            'Best School Website Designs for Colleges and Universities.jpg',
+            'coders-working-office-260nw-1876539448.webp',
+            'students-in-front-the-university.jpg',
+            'priscilla-du-preez-XkKCui44iM0-unsplash.jpg',
+            'dom-fou-YRMWVcdyhmI-unsplash.jpg',
+            'nathan-dumlao-ewGMqs2tmJI-unsplash.jpg'
+        ];
+
+        let currentSlideIndex = 0;
+        let slideshowInterval;
+
+        function updateSlideshow() {
+            const heroElement = document.getElementById('heroSlideshow');
+            const imagePath = slideshowImages[currentSlideIndex];
+            heroElement.style.backgroundImage = `url('./${imagePath}')`;
+
+            // Update active dot
+            const dots = document.querySelectorAll('.slide-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateSlideshow();
+            clearInterval(slideshowInterval);
+            startSlideshow();
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slideshowImages.length;
+            updateSlideshow();
+        }
+
+        function startSlideshow() {
+            slideshowInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        // Initialize slideshow on page load
+        window.addEventListener('load', () => {
+            updateSlideshow();
+            startSlideshow();
+        });
+
+        // Simple form submission handler (in a real app, this would send data to a backend server)
+        function showMessage(elementId, message, isSuccess = true) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.classList.remove('hidden', 'text-green-600', 'text-red-600');
+            element.classList.add(isSuccess ? 'text-green-600' : 'text-red-600');
+            setTimeout(() => {
+                element.classList.add('hidden');
+            }, 5000);
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            // Simulate API call success
+            setTimeout(() => {
+                showMessage('form-message', 'Thank you! Your message has been sent successfully. We will be in touch shortly.', true);
+                event.target.reset();
+            }, 800);
+        }
+
+        function handleModalSubmit(event) {
+            event.preventDefault();
+            // Simulate API call success
+            setTimeout(() => {
+                showMessage('modal-form-message', 'Application inquiry submitted! We will contact you via email within 24 hours.', true);
+                event.target.reset();
+                // Optionally close modal after success delay
+                setTimeout(() => {
+                    document.getElementById('contact-modal').classList.add('hidden');
+                }, 1500);
+            }, 800);
+        }
+
+        // Script to handle mobile menu toggle (not visible in the current fixed desktop nav, but good practice)
+        const menuButton = document.querySelector('[aria-expanded]');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuButton) {
+            menuButton.addEventListener('click', () => {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden', isExpanded);
+            });
+        }
+    </script>
+</body>
+</html>
